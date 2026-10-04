@@ -12,7 +12,7 @@ Cette première itération utilise une plateforme de traitement compacte et un c
 
 *   💻 **Unité Centrale** : i3-1215U (Architecture fanless industrielle)
 *   📡 **Capteur SDR** : Clé RTL-SDR (pour l'acquisition spectrale initiale)
-*   🐧 **OS** : Ubuntu (Optimisation temps réel)
+*   🐧 **OS** : Ubuntu 26.04 LTS (Optimisation temps réel)
 *   🐍 **Middleware** : Python 3.x, NumPy, SciPy (Traitement FFT)
 *   🤖 **Algorithme** : Isolation Forest (Détection d'anomalies non supervisée)
 
