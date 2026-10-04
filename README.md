@@ -40,6 +40,7 @@ chmod +x install.sh
 ### 1. Création du profil de bruit de fond (Calibrage)
 Avant de lancer la surveillance continue, il est nécessaire d'établir la référence du bruit local à l'aide du script de calibration :
 ```bash
+conda activate watcher1420
 python src/setup_background_noise_profile_HI_V0_4.py
 ```
 *Cela génère les fichiers de référence (`baseline_hi.npy`, etc.) indispensables pour distinguer le bruit thermique des signaux anormaux.*
@@ -50,6 +51,7 @@ Laissez tourner la station pendant une période prolongée pour accumuler des me
 ### 3. Entraînement du modèle d'IA
 Une fois les échantillons de référence collectés, exécute le script d'entraînement pour générer ou mettre à jour le modèle d'Isolation Forest (`watcher_model.pkl`) :
 ```bash
+conda activate watcher1420
 python src/train_watcher_model.py
 ```
 
