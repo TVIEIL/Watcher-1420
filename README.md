@@ -47,7 +47,14 @@ python src/setup_background_noise_profile_HI_V0_4.py
 
 ### 2. Collecte des échantillons
 Laissez tourner la station pendant une période prolongée pour accumuler des mesures de référence dans la base de données MariaDB (`radio_surveillance`).
-
+&nbsp;
+```
+conda activate watcher1420
+mysql -u watcher -pmon_mot_de_passe
+USE radio_surveillance;
+SELECT * FROM observations ORDER BY timestamp DESC LIMIT 5;
+```
+&nbsp;
 ### 3. Entraînement du modèle d'IA
 Une fois les échantillons de référence collectés, exécute le script d'entraînement pour générer ou mettre à jour le modèle d'Isolation Forest (`watcher_model.pkl`) :
 ```bash
