@@ -21,6 +21,6 @@ sudo ./setup_mariadb.sh
  .Connectez-vous à MariaDB pour valider la structure de la table :
  Bash
  ```
- sudo mysql -u watcher -pmot_de_passe radio_surveillance -e "DESCRIBE observations;"
+ sudo mysql -u watcher -pmon_mot_de_passe radio_surveillance -e "DESCRIBE observations;"
  ```
 La sortie de la commande doit afficher l'ensemble des 13 colonnes requises (id, timestamp, frequency_hz, max_power, etc.).
