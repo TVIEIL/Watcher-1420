@@ -33,6 +33,13 @@ chmod +x install.sh
 ./install.sh
 ```
 
+Il existe aussi un script de pour désinstaller
+watcher-1420:
+```bash
+chmod +x uninstall.sh
+./uninstall.sh
+```
+
 ---
 
 ## 🔬 Calibration et Entraînement du Modèle
