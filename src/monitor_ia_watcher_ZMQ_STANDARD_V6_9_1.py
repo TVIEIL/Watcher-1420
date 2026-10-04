@@ -1,3 +1,17 @@
+# Copyright 2026 Thierry VIEIL / Natacha Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 import numpy as np
 import subprocess
 import time
@@ -10,8 +24,11 @@ import json
 from skyfield.api import load, wgs84
 from datetime import datetime, timedelta
 import sys
+import os
+import glob
 
-version = "6.9.1"
+
+version = "6.9.2"
 
 # Variable pour retenir le dernier timestamp généré (en dehors de la boucle)
 last_timestamp = None
@@ -56,16 +73,49 @@ DB_CONFIG = {
     'database': "radio_surveillance"
 }
 
+def detect_rtlsdr_usb_port():
+    """
+    Détecte l'identifiant sysfs exact de la clé RTL-SDR (0bda:2838).
+    Exclut les sous-interfaces et les hubs.
+    """
+    for dev_path in glob.glob("/sys/bus/usb/devices/*"):
+        dev_name = os.path.basename(dev_path)
+        if ":" in dev_name:
+            continue
+            
+        vendor_file = os.path.join(dev_path, "idVendor")
+        product_file = os.path.join(dev_path, "idProduct")
+        
+        if os.path.exists(vendor_file) and os.path.exists(product_file):
+            try:
+                with open(vendor_file, "r") as f_v, open(product_file, "r") as f_p:
+                    if f_v.read().strip() == "0bda" and f_p.read().strip() == "2838":
+                        return dev_name
+            except Exception:
+                continue
+    return None
+
 def reset_dongle():
-    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] Réinitialisation matérielle du port USB (3-2)...")
+    usb_port = detect_rtlsdr_usb_port()
+    if not usb_port:
+        print(f"\n[{datetime.now().strftime('%H:%M:%S')}] [ERREUR] Clé RTL-SDR non détectée sur le bus USB.")
+        return
+
+    # Protection contre le unbind d'un hub racine
+    if usb_port.endswith("-1") or usb_port.startswith("usb"):
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] [SÉCURITÉ] Port cible ambigu ({usb_port}), reset ignoré.")
+        return
+
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] Réinitialisation matérielle du port USB ({usb_port})...")
     reset_cmd = (
-        'echo "3-2" | sudo tee /sys/bus/usb/drivers/usb/unbind && '
+        f'echo "{usb_port}" | sudo tee /sys/bus/usb/drivers/usb/unbind > /dev/null && '
         'sleep 3 && '
-        'echo "3-2" | sudo tee /sys/bus/usb/drivers/usb/bind'
+        f'echo "{usb_port}" | sudo tee /sys/bus/usb/drivers/usb/bind > /dev/null'
     )
     subprocess.run(reset_cmd, shell=True)
     print("Réinitialisation terminée. Attente de stabilisation...")
     time.sleep(5)
+
 
 def is_machine_up(host):
     command = ["ping", "-c", "3", host]

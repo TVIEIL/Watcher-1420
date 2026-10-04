@@ -3,3 +3,12 @@ __pycache__/
 *.log
 .ipynb_checkpoints/
 tests/
+# Données brutes et spectres d'anomalies
+src/anomalies_data/
+*.txt
+*.log
+
+# Cache Python et environnement
+__pycache__/
+*.pyc
+.pytest_cache/
