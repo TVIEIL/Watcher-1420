@@ -43,7 +43,7 @@ Avant de lancer la surveillance continue, il est nécessaire d'établir la réf�
 conda activate watcher1420
 python src/setup_background_noise_profile_HI_V0_4.py
 ```
-*Cela génère les fichiers de référence (`baseline_hi.npy`, etc.) indispensables pour distinguer le bruit thermique des signaux anormaux. On met une fin de ligne 50 ohms au lieu de l'antenne.*
+*Cela génère les fichiers de référence (`baseline_hi.npy`, etc.) indispensables pour distinguer le bruit thermique des signaux anormaux. On met une fin de ligne 50 ohms au lieu de l'antenne sur le RTL-SDR.*
 
 ### 2. Collecte des échantillons
 Laissez tourner la station pendant une période prolongée pour accumuler des mesures de référence dans la base de données MariaDB (`radio_surveillance`).
