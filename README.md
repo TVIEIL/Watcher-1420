@@ -100,4 +100,35 @@ Le service de monitoring tourne en arrière-plan via systemd (mode utilisateur) 
 | **Visualisation Isométrique Live**<br>`conda activate watcher1420`<br>`python src/exemple_script_live_isometric_watcher4.py` | ![Live Isometric](assets/exemple_script_live_isometric_watcher4.png) |
 
 ---
+
+## 🙏 Remerciements et Dépendances
+
+Watcher-1420 s'appuie sur un écosystème open-source puissant et diversifié pour le stockage, le traitement du signal, l'astronomie de position, le machine learning et la visualisation de données. Un grand merci aux développeurs et aux communautés de ces projets :
+
+### 🗄️ Stockage & Communication
+* **[MariaDB](https://mariadb.org/)** — Le SGBD relationnel robuste qui stocke l'ensemble de nos tables d'observations et de métriques spectrales.
+* **[MySQL Connector/Python](https://dev.mysql.com/doc/connector-python/en/)** (`9.7.0`) — Le connecteur officiel pour dialoguer avec la base de données depuis l'agent.
+* **[PyZMQ](https://zeromq.org/)** (`27.1.0`) — Sockets ZeroMQ pour la télémétrie et la communication inter-processus en temps réel.
+
+### 🌌 Astronomie & Traitement du Signal
+* **[Skyfield](https://rhodesmill.org/skyfield/)** (`1.54`) & **[Jplephem](https://github.com/brandon-rhodes/python-jplephem)** (`2.24`) — Calculs astronomiques de haute précision et éphémérides.
+* **[NumPy](https://numpy.org/)** (`2.26`) & **[SciPy](https://scipy.org/)** (`1.15.3`) — Le socle mathématique pour le calcul scientifique et le traitement spectral.
+* **[SGP4](https://github.com/brandon-rhodes/python-sgp4)** (`2.27`) — Propagation d'orbites satellites.
+
+### 🤖 Intelligence Artificielle & Machine Learning
+* **[Scikit-learn](https://scikit-learn.org/)** (`1.7.2`) — Algorithmes de détection d'anomalies.
+* **[Joblib](https://joblib.readthedocs.io/)** (`1.5.3`) — Sérialisation et parallélisation.
+* **[Threadpoolctl](https://github.com/joblib/threadpoolctl)** (`3.6.0`) — Contrôle des threads de calcul.
+
+### 📊 Visualisation & Rendu
+* **[Matplotlib](https://matplotlib.org/)** (`3.10.9`) — Génération des graphiques et rendus 3D des waterfalls.
+* **[Plotly](https://plotly.com/python/)** (`6.9.0`) — Tableaux de bord interactifs.
+* *Dépendances graphiques :* ContourPy (`1.3.2`), Cycler (`0.12.1`), FontTools (`4.63.0`), KiwiSolver (`1.5.0`), PyParsing (`3.3.2`).
+
+### 🛠️ Manipulation de Données & Utilitaires
+* **[Pandas](https://pandas.pydata.org/)** (`2.3.3`) — Analyse et manipulation des séries temporelles.
+* **[Narwhals](https://github.com/narwhals-dev/narwhals)** (`2.24.0`) — Abstraction légère pour dataframes.
+* **Gestion du temps & Divers :** Python-Dateutil (`2.9.0.post0`), Pytz (`2026.2`), Tzdata (`2026.3`), Pillow (`12.3.0`), Packaging (`26.0`), Certifi (`2026.6.17`), Six (`1.17.0`).
+
+---
 *« Si le ciel répond, Watcher-1420 sera le premier à l'entendre. »*
