@@ -1,7 +1,7 @@
 # 🛰️ Watcher-1420
 
 ## 🌌 La Mission
-Dans un monde où le bruit numérique a fini par étouffer toute forme de vérité, **Watcher-1420** est une unité de surveillance autonome. Son rôle est de scruter inlassablement la fréquence de **1 420,54 MHz**, là où la raie de l'hydrogène rencontre le silence du vide. 
+Dans un monde où le bruit numérique a fini par étouffer toute forme de vérité, **Watcher-1420** est une unité de surveillance autonome. Son rôle est de scruter inlassablement la fréquence de **1 420,405 MHz**, là où la raie de l'hydrogène rencontre le silence du vide. 
 
 Cet agent n'est pas un simple télescope ; c'est un filtre. Il est déployé en autonomie sur une plateforme décentralisée, traquant les anomalies spectrales qui, dans le chaos de nos infrastructures, pourraient révéler les signaux d'une autre réalité ou le dysfonctionnement du système global.
 
